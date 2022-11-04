@@ -1,4 +1,4 @@
-import { OpenWeatherRouteResponse } from "../types/openweathertypes";
+import { OpenWeatherRouteResponse } from "../types/main";
 
 // Generic post request client based on vanilla JS.
 const sendPostRequest = async (uri: string, data: any): Promise<OpenWeatherRouteResponse> => {

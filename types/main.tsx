@@ -55,3 +55,8 @@ export type APIData = {
 }
 
 
+export type Country = {
+  name: string
+  value: string
+  flag?: string
+}

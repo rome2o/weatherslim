@@ -1,4 +1,4 @@
-import { APIData, OpenWeatherResponse, PluckedData } from '../../types/openweathertypes';
+import { APIData, OpenWeatherResponse, PluckedData } from '../../types/main';
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
 const BASE_URL = process.env.NEXT_BASE_URL
