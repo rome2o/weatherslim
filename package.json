@@ -10,12 +10,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.4",
     "@types/node": "18.11.9",
     "@types/react": "18.0.24",
     "@types/react-dom": "18.0.8",
     "eslint": "8.26.0",
     "eslint-config-next": "13.0.2",
-    "moment-timezone": "^0.5.38",
     "next": "13.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
