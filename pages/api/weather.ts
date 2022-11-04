@@ -26,7 +26,6 @@ function parseRequest(uri: string, res: NextApiResponse<APIData>){
     return sendApiRequest(uri)
             .then(data => {
                 if (data?.cod && data?.message) return Promise.reject(data);
-                console.log(data);
                 return res.status(200).send({ data: pluckDescription(data), status: 'success' })
             })
             .catch(error => res.status(400).json({ ...error, status: 'error' }))

@@ -40,6 +40,7 @@ export interface OpenWeatherResponse extends IWeatherResponse {
 }
 export interface OpenWeatherRouteResponse extends OpenWeatherResponse {
   status: 'error' | 'success'
+
 }
 
 export interface PluckedData {
@@ -50,7 +51,7 @@ export interface PluckedData {
 export type APIData = {
   message?: string
   status: 'error' | 'success'
-  data?: OpenWeatherResponse | PluckedData
+  data?: PluckedData 
   cod?: string
 }
 

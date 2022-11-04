@@ -6,7 +6,7 @@ import { Country } from '../types/main';
 
 const getFlagEmoji = (countryCode:string): string => {
   if(!countryCode) return '';
-  return String.fromCodePoint(...[...Array.from(countryCode.toUpperCase())].map(x=>0x1f1a5+x.charCodeAt()))
+  return String.fromCodePoint(...[...Array.from(countryCode.toUpperCase())].map(x=>0x1f1a5+x.charCodeAt(0)))
 }
 
 
@@ -35,6 +35,7 @@ const currentValue = () => {
 }
   return (
     <div className={styles.relative}>
+      {/* @ts-ignore */}
     <Combobox value={currentValue()} onChange={setSelectedCountry}>
       <Combobox.Input onChange={(event) => setQuery(event.target.value)} className={styles.input} autoComplete="off" id="country_selector" placeholder="e.g. Australia" required/>
       <input type="hidden" name="country_code" value={selectedCountry?.value}  />

@@ -19,7 +19,7 @@ const Default = () => {
 const [response, setResponse] = useState<APIData>();
 const [loading, setLoading] = useState<boolean>(false)
 const [error, setError] = useState<string>();
-const [formValues, setFormValues] = useState<{city: string, country_code: string} | null>({city: '', country_code: ''});
+const [formValues, setFormValues] = useState<{city: string | FormDataEntryValue, country_code: string | FormDataEntryValue;} | null>({city: '', country_code: ''});
   const submitForm = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -31,7 +31,7 @@ const [formValues, setFormValues] = useState<{city: string, country_code: string
       city: city,
       country_code: country_code
     }
-    setFormValues(requestData);
+    setFormValues({...requestData});
     sendPostRequest(uri,requestData).then( response => {
       if(response?.status == 'error') throw new Error(response.message)
       setResponse(response);
@@ -48,7 +48,7 @@ const [formValues, setFormValues] = useState<{city: string, country_code: string
         <h1 className={styles.title}>
         {loading ? 
         <Spinner isLoading={true} /> : 
-        response?.data ? response.data.description: <Default />
+        response?.data ? response.data?.description: <Default />
         }
         </h1>
         <p className={styles.description}>
