@@ -1,8 +1,43 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import { useState } from 'react'
+import Spinner from '../components/Spinner'
 import styles from '../styles/Home.module.css'
+const uri = '/api/weather'
+import { APIData, OpenWeatherResponse, OpenWeatherRouteResponse } from '../types/openweathertypes';
+import sendPostRequest from '../utils/sendPostRequest'
 
 export default function Home() {
+  const [response, setResponse] = useState<APIData>();
+  const [loading, setLoading] = useState<boolean>(false)
+  const [error, setError] = useState<string>();
+
+
+  const submitForm = async (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      const data = new FormData(event.currentTarget);
+      const city = data.get('city')
+      const country_code = data.get('country_code')
+      if(!city || !country_code) return alert('Please add the required fields');
+      setLoading(true);
+      const requestData = {
+        city: city,
+        country_code: country_code
+      }
+      sendPostRequest(uri,requestData).then( response => {
+        if(response?.status == 'error') throw new Error(response.message)
+        setResponse(response);
+        setError(undefined);
+      }).catch(error => {
+        setError(error.message);
+        setResponse(undefined)
+      }).finally( () => setLoading(false));
+
+
+  }
+  const Default = () => {
+    return (<>What&apos;s the weather like <span>today</span>?</>)
+  }
   return (
     <div className={styles.container}>
       <Head>
@@ -13,45 +48,34 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+        {loading ? 
+          <Spinner isLoading={true} /> : 
+          response?.data ? response.data.description: <Default />
+          }
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
+          {typeof error == 'undefined' ? <>Get started by writing the city name{' '}</> : <span className={styles.errorText}>Oops! {error}. Try again.</span>}
         </p>
+        <form onSubmit={submitForm} className={styles.form}>
+        <div className={styles.flexRow}>
+          <div className={styles.flexColumn}>
+          <label className={styles.label}>City name</label>
+          <input type="text" name="city" placeholder='E.g. Melbourne' className={styles.input} required />
+          </div>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+          <div className={styles.flexColumn}>
+          <label className={styles.label}>Country</label>
+          <input type="text" name="country_code" placeholder='E.g. Melbourne' className={styles.input} required />
+          </div>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
         </div>
+        <div style={{display: 'flex', marginTop: '1em'}}>
+          <button className={styles.button} type="submit">Search</button>
+        </div>
+        </form>
+
+
       </main>
 
       <footer className={styles.footer}>
