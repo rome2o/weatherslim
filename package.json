@@ -1,6 +1,7 @@
 {
   "name": "jbhifi",
   "version": "0.1.0",
+  "author": "Kazim Ali",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -14,6 +15,7 @@
     "@types/react-dom": "18.0.8",
     "eslint": "8.26.0",
     "eslint-config-next": "13.0.2",
+    "moment-timezone": "^0.5.38",
     "next": "13.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
