@@ -3,67 +3,6 @@
   padding: 0 2rem;
 }
 
-.errorText{
-  color: #ff6161
-}
-
-.form {
-  width: 100%;
-  max-width: 700px;
-  padding: 0 2rem;
-  margin: 1rem 0;
-}
-
-.input {
-  background: #212121;
-  width: 100%;
-  display: block;
-  padding: 1em 2em;
-  border: 1px solid #353535;
-  border-radius: 0.5em;
-  outline: none;
-}
-
-.label {
-  margin-bottom: 10px;
-}
-
-.flexColumn {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-}
-
-.flexRow {
-  width: 100%;
-  display: flex;
-  gap: 1em;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-.button{
-  width:100%;
-  padding: 1em;
-  background: #0070f3;
-  border: 0px;
-  border-radius: 0.5em;
-  transition: 0.5s ease;
-  cursor: pointer;
-}
-
-.button:hover{
-  background: #00438f;
-}
-
-.hrDivider {
-  border-color: #353535;
-  width: 100%;
-  padding: 0 2rem;
-  max-width:650px
-}
-
 .main {
   min-height: 90vh;
   padding: 4rem 0;
@@ -90,33 +29,6 @@
   flex-grow: 1;
 }
 
-.title a, .title span {
-  color: #0070f3;
-  text-decoration: none;
-}
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
-}
-
-.title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
-}
-
-.title,
-.description {
-  text-align: center;
-}
-
-.description {
-  margin: 4rem 0;
-  line-height: 1.5;
-  font-size: 1.5rem;
-}
 
 .code {
   background: #fafafa;
