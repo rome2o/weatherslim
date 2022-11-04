@@ -19,7 +19,7 @@ const Default = () => {
 const [response, setResponse] = useState<APIData>();
 const [loading, setLoading] = useState<boolean>(false)
 const [error, setError] = useState<string>();
-const [detectLocation, setDetectedLocation] = useState<boolean>(false);
+const [formValues, setFormValues] = useState<{city: string, country_code: string} | null>({city: '', country_code: ''});
   const submitForm = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -31,6 +31,7 @@ const [detectLocation, setDetectedLocation] = useState<boolean>(false);
       city: city,
       country_code: country_code
     }
+    setFormValues(requestData);
     sendPostRequest(uri,requestData).then( response => {
       if(response?.status == 'error') throw new Error(response.message)
       setResponse(response);
@@ -50,9 +51,13 @@ const [detectLocation, setDetectedLocation] = useState<boolean>(false);
         response?.data ? response.data.description: <Default />
         }
         </h1>
-        {detectLocation && <DetectedWeather />}
         <p className={styles.description}>
-        {typeof error == 'undefined' ? <>Get started by writing the city name{' '}</> : <span className={styles.errorText}>Oops! {error}. Try again.</span>}
+          {
+            error ? 
+            <span className={styles.errorText}>Oops! {error}. Try again.</span> :
+            !loading && (formValues?.city && formValues?.country_code)  ? <>{formValues.city}, {formValues.country_code}</>: <>Get started by writing the city name{' '}</>
+          }
+
         </p>
         <form onSubmit={submitForm} className={styles.form}>
         <div className={styles.flexRow}>
@@ -69,10 +74,6 @@ const [detectLocation, setDetectedLocation] = useState<boolean>(false);
         </div>
         <div style={{display: 'flex', marginTop: '1em'}}>
           <button className={styles.button} type="submit">Search</button> 
-        
-        </div>
-        <div style={{display: 'flex', marginTop: '1em'}}>
-          <button className={styles.buttonSecondary} type="button" onClick={() => setDetectedLocation(true)}>Detect my location</button> 
         </div>
         </form>
         </>

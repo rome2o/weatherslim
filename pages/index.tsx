@@ -2,6 +2,7 @@
 
 import Head from 'next/head'
 import Image from 'next/image'
+import DetectedWeather from '../components/DetectedWeather'
 import MainForm from '../components/MainForm'
 import styles from '../styles/Home.module.css'
 
@@ -16,6 +17,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
+      <DetectedWeather />
       <MainForm />
       </main>
 
