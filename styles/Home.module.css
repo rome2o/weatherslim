@@ -1,9 +1,71 @@
+
 .container {
   padding: 0 2rem;
 }
 
+.errorText{
+  color: #ff6161
+}
+
+.form {
+  width: 100%;
+  max-width: 700px;
+  padding: 0 2rem;
+  margin: 1rem 0;
+}
+
+.input {
+  background: #212121;
+  width: 100%;
+  display: block;
+  padding: 1em 2em;
+  border: 1px solid #353535;;
+  border-radius: 0.5em;
+  outline: none;
+}
+
+.label {
+  margin-bottom: 10px;
+}
+
+.flexColumn {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.flexRow {
+  width: 100%;
+  display: flex;
+  gap: 1em;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.button{
+  width:100%;
+  padding: 1em;
+  background: #0070f3;
+  border: 0px;
+  border-radius: 0.5em;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+
+.button:hover{
+  background: #00438f;
+}
+
+.hrDivider {
+  border-color: #353535;
+  width: 100%;
+  padding: 0 2rem;
+  max-width:650px
+}
+
 .main {
-  min-height: 100vh;
+  min-height: 90vh;
   padding: 4rem 0;
   flex: 1;
   display: flex;
@@ -28,7 +90,7 @@
   flex-grow: 1;
 }
 
-.title a {
+.title a, .title span {
   color: #0070f3;
   text-decoration: none;
 }
@@ -70,11 +132,13 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 800px;
+  max-width: 700px;
+  padding: 0 2rem;
+  width: 100%;
 }
 
 .card {
-  margin: 1rem;
+  margin: 1rem 0;
   padding: 1.5rem;
   text-align: left;
   color: inherit;
@@ -82,7 +146,8 @@
   border: 1px solid #eaeaea;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
+  max-width: 700px;
+  width: 100%;
 }
 
 .card:hover,
@@ -127,3 +192,4 @@
     filter: invert(1);
   }
 }
+
