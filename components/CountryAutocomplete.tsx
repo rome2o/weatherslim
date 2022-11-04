@@ -2,7 +2,7 @@ import { Combobox } from '@headlessui/react';
 import { useState } from 'react';
 import data from '../data/countries.json';
 import styles from '../styles/headlessCombobox.module.css';
-import { Country } from '../types/openweathertypes';
+import { Country } from '../types/main';
 
 const getFlagEmoji = (countryCode:string): string => {
   if(!countryCode) return '';

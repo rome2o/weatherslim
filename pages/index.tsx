@@ -1,11 +1,14 @@
+
+
 import Head from 'next/head'
 import Image from 'next/image'
 import { useState } from 'react'
+import CountryAutocomplete from '../components/CountryAutocomplete'
 import Spinner from '../components/Spinner'
 import styles from '../styles/Home.module.css'
-const uri = '/api/weather'
-import { APIData, OpenWeatherResponse, OpenWeatherRouteResponse } from '../types/openweathertypes';
+import { APIData } from '../types/main'
 import sendPostRequest from '../utils/sendPostRequest'
+const uri = '/api/weather'
 
 export default function Home() {
   const [response, setResponse] = useState<APIData>();
@@ -38,6 +41,7 @@ export default function Home() {
   const Default = () => {
     return (<>What&apos;s the weather like <span>today</span>?</>)
   }
+  
   return (
     <div className={styles.container}>
       <Head>
@@ -66,7 +70,7 @@ export default function Home() {
 
           <div className={styles.flexColumn}>
           <label className={styles.label}>Country</label>
-          <input type="text" name="country_code" placeholder='E.g. Melbourne' className={styles.input} required />
+          <CountryAutocomplete />
           </div>
 
         </div>
