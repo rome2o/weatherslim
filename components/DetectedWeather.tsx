@@ -55,7 +55,7 @@ export default class DetectedWeather extends React.Component<{},ICurrentLocation
             borderRadius: '0.5em',
             textAlign:'left',
             display: 'flex',
-            margin: '10px',
+            margin: '20px',
             flexDirection:'column',
             alignItems: 'center',
             gap:'0.5em'

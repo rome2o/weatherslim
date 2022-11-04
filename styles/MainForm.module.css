@@ -33,6 +33,7 @@
     flex-direction: column;
   }
   
+  
   .flexRow {
     width: 100%;
     display: flex;
@@ -42,6 +43,11 @@
     justify-content: center;
   }
 
+  @media(max-width: 768px){
+    .flexRow {
+      flex-direction: column;
+    }
+  }
 .input {
     background: #212121;
     width: 100%;
