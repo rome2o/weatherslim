@@ -1,7 +1,7 @@
 import React from "react";
 import sendPostRequest from "../utils/sendPostRequest";
 const uri = '/api/weather'
-
+import styles from '../styles/DetectedWeather.module.css'
 
 interface ICurrentLocation {
     loading: boolean;
@@ -49,16 +49,6 @@ export default class DetectedWeather extends React.Component<{},ICurrentLocation
     }
     render() {
         const description = this.state?.data?.description;
-        if(this.state?.data) return (<div role="list" style={{
-            // background: 'hsl(215deg 89% 26%)',
-            padding: '10px',
-            borderRadius: '0.5em',
-            textAlign:'left',
-            display: 'flex',
-            margin: '20px',
-            flexDirection:'column',
-            alignItems: 'center',
-            gap:'0.5em'
-        }}><span style={{ fontSize: '0.8em', background:'white', color: 'black', padding:'15px', borderRadius: '1em'}}>Your current weather is <b>{description}</b></span> </div>)
+        if(this.state?.data) return (<div role="list" className={styles.detectedWeather}><span className={styles.detectedWeatherSpan}>Your current weather is <b>{description}</b></span> </div>)
     }
 }

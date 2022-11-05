@@ -1,0 +1,19 @@
+.detectedWeather{
+    padding: 10px;
+    border-radius: 0.5em;
+    text-align:left;
+    display: flex;
+    margin: 20px;
+    flex-direction:column;
+    align-items: center;
+    gap:0.5em;
+}
+
+.detectedWeatherSpan{
+    font-size: 0.8em;
+    background: white;
+    display: block;
+    color: black;
+    padding:15px;
+    border-radius: 1em;
+}
