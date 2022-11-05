@@ -1,10 +1,9 @@
-import CountryAutocomplete from "./CountryAutocomplete"
+import CountryAutocomplete from "./CountryAutocomplete";
 
-import styles from '../styles/MainForm.module.css'
 import { useState } from "react";
+import styles from '../styles/MainForm.module.css';
 import { APIData } from "../types/main";
 import sendPostRequest from "../utils/sendPostRequest";
-import DetectedWeather from "./DetectedWeather";
 import Spinner from "./Spinner";
 const uri = '/api/weather'
 
@@ -40,9 +39,8 @@ const [formValues, setFormValues] = useState<{city: string | FormDataEntryValue,
       setError(error.message);
       setResponse(undefined)
     }).finally( () => setLoading(false));
-
-
 }
+
     return (
         <>
         <h1 className={styles.title}>
