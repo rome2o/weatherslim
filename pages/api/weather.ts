@@ -1,9 +1,14 @@
 import { APIData, OpenWeatherResponse, PluckedData } from '../../types/main';
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
-const BASE_URL = process.env.NEXT_BASE_URL
-const API_KEY = process.env.NEXT_API_KEY
-
+import rateLimit from '../../utils/rate-limit';
+const BASE_URL = process.env.NEXT_BASE_URL;
+const API_KEY = process.env.NEXT_API_KEY;
+const MAX_API_HIT = 10;
+const limiter = rateLimit({
+  interval: 60 * 1000, // 60 seconds
+  uniqueTokenPerInterval: 500, // Max 500 users per second
+})
 
 /**
  * Simple wrapper to send a request
@@ -44,7 +49,7 @@ function pluckDescription(data: OpenWeatherResponse): PluckedData {
     }
 }
 
-export default function handler(
+export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<APIData>
 ) {
@@ -56,6 +61,9 @@ export default function handler(
 
         // Conduct some magic.
         const { city, country_code, lat, lon } = req.body;
+
+        // 10 requests per minute
+        await limiter.check(res, MAX_API_HIT, 'CACHE_TOKEN') 
         
         // What's the weather like with lat lon?
         if(lat && lon) {
