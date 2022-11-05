@@ -4,10 +4,13 @@
     text-align:center;
   }
   .ldsRing {
-    display: inline-block;
+    display: flex;
     position: relative;
-    width: 2em;
-    height: 2em;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
   }
   .spinner .ldsRing div {
     box-sizing: border-box;
