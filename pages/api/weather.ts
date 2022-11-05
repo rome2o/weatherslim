@@ -28,17 +28,19 @@ function parseRequest(uri: string, res: NextApiResponse<APIData>){
                 if (data?.cod && data?.message) return Promise.reject(data);
                 return res.status(200).send({ data: pluckDescription(data), status: 'success' })
             })
-            .catch(error => res.status(400).json({ ...error, status: 'error' }))
+            .catch(error => res.status(400).json({ message: 'Something with request.', ...error, status: 'error' }))
 }
 
 /**
  * Plucks the description
  * @param data 
- * @returns object
+ * @returns object | Error
  */
 function pluckDescription(data: OpenWeatherResponse): PluckedData {
+    const weatherFields = data.weather.map(w => w?.description);
+    if(weatherFields.length == 0) throw new Error('Something went wrong with weather descriptions');
     return {
-        description: data.weather.map(w => w.description).join(', ')
+        description: weatherFields.join(', ')
     }
 }
 
