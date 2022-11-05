@@ -53,14 +53,13 @@ const [formValues, setFormValues] = useState<{city: string | FormDataEntryValue,
           {
             error ? 
             <span className={styles.errorText}>Oops! {error}. Try again.</span> :
-            !loading && (formValues?.city && formValues?.country_code)  ? <>{formValues.city}, {formValues.country_code}</>: <>Get started by writing the city name{' '}</>
+            !loading && (formValues?.city && formValues?.country_code)  ? <>{formValues.city}, {formValues.country_code}</>: <>Get started by telling us city and country.{' '}</>
           }
-
         </p>
         <form onSubmit={submitForm} className={styles.form}>
         <div className={styles.flexRow}>
           <div className={styles.flexColumn}>
-          <label className={styles.label}>City name</label>
+          <label className={styles.label}>City</label>
           <input type="text" name="city" placeholder='E.g. Melbourne' className={styles.input} required />
           </div>
 
@@ -71,7 +70,7 @@ const [formValues, setFormValues] = useState<{city: string | FormDataEntryValue,
 
         </div>
         <div style={{display: 'flex', marginTop: '1em'}}>
-          <button className={styles.button} type="submit">Search</button> 
+          <button className={styles.button} type="submit">Check weather</button> 
         </div>
         </form>
         </>
