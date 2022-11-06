@@ -4,7 +4,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import rateLimit from '../../utils/rate-limit';
 const BASE_URL = process.env.NEXT_OPENWEATHER_BASE_URL;
 const API_KEY = process.env.NEXT_OPENWEATHER_API_KEY;
-const RATE_LIMIT_DEBUG = process.env.NEXT_OPENWEATHER_RATE_LIMIT_DEBUG ?? false;
+const RATE_LIMIT_DEBUG = process.env.NEXT_OPENWEATHER_RATE_LIMIT_DEBUG === 'true' ? true : false;
 const MAX_API_HIT = 10;
 const limiter = rateLimit({
     interval: 60 * 1000, // 60 seconds
