@@ -2,8 +2,8 @@ import { APIData, OpenWeatherResponse, PluckedData } from '../../types/main';
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
 import rateLimit from '../../utils/rate-limit';
-const BASE_URL = process.env.NEXT_BASE_URL;
-const API_KEY = process.env.NEXT_API_KEY;
+const BASE_URL = process.env.NEXT_OPENWEATHER_BASE_URL;
+const API_KEY = process.env.NEXT_OPENWEATHER_API_KEY;
 const MAX_API_HIT = 10;
 const limiter = rateLimit({
   interval: 60 * 1000, // 60 seconds
