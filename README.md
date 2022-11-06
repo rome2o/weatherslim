@@ -19,6 +19,7 @@ Create a .env.local file with your credentials
 ```
 NEXT_OPENWEATHER_BASE_URL='https://api.openweathermap.org/data/2.5/weather'
 NEXT_OPENWEATHER_API_KEY='<YOUR_OPENWEATHER_API_KEY>'
+NEXT_OPENWEATHER_RATE_LIMIT_DEBUG=<TRUE IF TESTING OR DEV ENVIRONMENT>
 ```
 First, run the development server:
 
@@ -39,6 +40,8 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 ## Testing
 
 We are using Cypress to run e2e tests for this application `start-server-and-test` to run dev server behind.
+
+Ensure that you've got your API key in the environment variable and have turned on rate limit debugging. 
 
 ```bash
 npm run test
