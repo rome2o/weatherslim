@@ -38,10 +38,16 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 ## Testing
 
-We are using Cypress to run e2e tests for this application.
-
-*Please make sure your development server is up and running before running Cypress.*
+We are using Cypress to run e2e tests for this application `start-server-and-test` to run dev server behind.
 
 ```bash
-npm run cypress 
+npm run test
 ```
+
+If you want to directly run the tests, please put dev server on the road by `npm run dev` before running the following command.
+
+```
+npm run cypress
+```
+
+*Note: If your dev server is not up or your port 3000 is occupied, running Cypress might give an error upon testing.*

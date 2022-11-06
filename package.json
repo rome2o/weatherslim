@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "cypress": "cypress open"
+    "cypress": "cypress open",
+    "test": "start-server-and-test dev http://localhost:3000 cypress"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.4",
@@ -26,6 +27,7 @@
     "@types/react-dom": "18.0.8",
     "@types/uuid": "^8.3.4",
     "cypress": "^10.11.0",
+    "start-server-and-test": "^1.14.0",
     "typescript": "4.8.4"
   }
 }
